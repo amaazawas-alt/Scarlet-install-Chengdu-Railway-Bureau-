@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100508">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<title>Install Scarlet | Amaazbots</title>
+
+<style>
+:root {
+    --red: #ff304f;
+    --bright-red: #ff5b70;
+    --text: #ffffff;
+    --muted: #b5a0aa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+    color: var(--text);
+
+    font-family: -apple-system, BlinkMacSystemFont,
+        "SF Pro Display", "Segoe UI", sans-serif;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(255, 35, 70, .22),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 85%,
+            rgba(175, 0, 48, .2),
+            transparent 45%
+        ),
+        #080508;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .32;
+    animation: drift 9s ease-in-out infinite alternate;
+}
+
+.orb.one {
+    top: -100px;
+    left: -90px;
+    background: #ff244f;
+}
+
+.orb.two {
+    right: -90px;
+    bottom: -100px;
+    background: #b80036;
+    animation-delay: 2s;
+}
+
+@keyframes drift {
+    to {
+        transform: translate(55px, 45px);
+    }
+}
+
+.grid-bg {
+    position: absolute;
+    inset: 0;
+    opacity: .13;
+
+    background-image: radial-gradient(
+        rgba(255, 110, 130, .45) .7px,
+        transparent .7px
+    );
+
+    background-size: 26px 26px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black,
+        transparent
+    );
+}
+
+.card {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    padding: 38px 28px 27px;
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(29, 13, 19, .78);
+    border: 1px solid rgba(255, 255, 255, .11);
+
+    backdrop-filter: blur(26px);
+    -webkit-backdrop-filter: blur(26px);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .55),
+        0 0 65px rgba(255, 30, 70, .06),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+
+    animation: appear .7s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    width: 116px;
+    height: 116px;
+    object-fit: contain;
+    border-radius: 27px;
+    margin-bottom: 20px;
+
+    filter: drop-shadow(
+        0 0 25px rgba(255, 40, 75, .4)
+    );
+
+    animation: bob 3s ease-in-out infinite;
+}
+
+@keyframes bob {
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+h1 {
+    font-size: 37px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 9px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tag {
+    padding: 9px 12px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .09);
+
+    color: #e8d5db;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.certificate {
+    padding: 19px;
+    margin-bottom: 23px;
+    text-align: left;
+    border-radius: 19px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 40, 75, .12),
+        rgba(255, 80, 100, .035)
+    );
+
+    border: 1px solid rgba(255, 70, 95, .2);
+}
+
+.certificate-label {
+    font-size: 12px;
+    color: #b9a0a9;
+    margin-bottom: 10px;
+}
+
+.certificate-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.certificate-id {
+    font-size: 13px;
+    color: #ff8296;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+
+.install-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 18px 20px;
+    border: none;
+    border-radius: 17px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #e82046,
+        #ff5c70
+    );
+
+    box-shadow:
+        0 12px 30px rgba(255, 40, 75, .28);
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.install-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 17px 38px rgba(255, 40, 75, .4);
+}
+
+.install-btn:active {
+    transform: scale(.98);
+}
+
+.install-btn svg {
+    width: 21px;
+    height: 21px;
+}
+
+.status {
+    margin-top: 16px;
+    min-height: 20px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #b5a0aa;
+}
+
+.footer {
+    margin-top: 25px;
+    padding-top: 19px;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+
+    font-size: 11px;
+    color: #8b727c;
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 32px 21px 24px;
+        border-radius: 26px;
+    }
+
+    .logo {
+        width: 104px;
+        height: 104px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orb,
+    .logo,
+    .card {
+        animation: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background" aria-hidden="true">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="grid-bg"></div>
+</div>
+
+<main class="card">
+
+    <img
+        src="scarlet-logo.png"
+        alt="Scarlet Logo"
+        class="logo"
+    >
+
+    <h1>Scarlet</h1>
+
+    <p class="subtitle">
+        Install Scarlet directly on your iPhone or iPad.
+        Tap the button below to begin.
+    </p>
+
+    <div class="tags">
+        <span class="tag">📱 iOS & iPadOS</span>
+        <span class="tag">⚡ OTA Install</span>
+        <span class="tag">📦 App Installer</span>
+    </div>
+
+    <div class="certificate">
+        <div class="certificate-label">
+            🔐 Signing Certificate
+        </div>
+
+        <div class="certificate-name">
+            Chengdu Railway Bureau
+        </div>
+
+        <div class="certificate-id">
+            ID: A9HAF6NT6S
+        </div>
+    </div>
+
+    <button
+        class="install-btn"
+        type="button"
+        id="installButton"
+    >
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+        >
+            <path
+                d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+
+        <span>Install Scarlet</span>
+    </button>
+
+    <p class="status" id="status" role="status">
+        Open this page in Safari on your iPhone or iPad.
+    </p>
+
+    <footer class="footer">
+        Powered by Amaazbots
+    </footer>
+
+</main>
+
+<script>
+const manifestURL =
+    "https://skibiditech.co/manifest.php" +
+    "?bid=com.skibidi.ScarletPersonal" +
+    "&certID=A9HAF6NT6S" +
+    "&name=Scarlet";
+
+const installURL =
+    "itms-services://?action=download-manifest&url=" +
+    encodeURIComponent(manifestURL);
+
+document.getElementById("installButton")
+    .addEventListener("click", function() {
+        document.getElementById("status").textContent =
+            "Opening Scarlet installation...";
+
+        window.location.href = installURL;
+    });
+</script>
+
+</body>
+</html>
